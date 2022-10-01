@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 3</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <h1>Random number</h1>
+
+    <div id="range">
+        <div class="min flex">
+            <label id="labelOne">From: </label>
+
+            <select id="select1">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+        </div>
+
+        <div class="max flex">
+            <label id="labelTwo">To: </label>
+
+            <select id="select2">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10" selected>10</option>
+            </select>
+        </div>
+    </div>
+
+    <div id="output">0</div>
+    <button id="btn">Random Number</button>
+
+    <script>
+        let button = document.getElementById('btn');
+        let output = document.getElementById('output');
+        let select1 = document.getElementById('select1');
+        let select2 = document.getElementById('select2');
+        let selectedOneValue = 0;
+        let selectedTwoValue = 0;
+
+        function onChange() {
+            selectedOneValue = Number(select1.value);
+            selectedTwoValue = Number(select2.value);
+        }
+
+        button.addEventListener('click', ()=>{
+            if(selectedOneValue < selectedTwoValue) {
+                output.textContent = Math.floor(Math.random() * (selectedTwoValue - selectedOneValue + 1)) + selectedOneValue;
+            } else {
+                output.textContent = Math.floor(Math.random() * (selectedOneValue - selectedTwoValue + 1)) + selectedTwoValue;
+            }
+        });
+
+        select1.onchange = onChange;
+        select2.onchange = onChange;
+        onChange();
+    </script>
+</body>
+</html>
